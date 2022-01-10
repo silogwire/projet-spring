@@ -3,7 +3,6 @@
   hosts: servers
   become: yes
   vars:
-          BUILD_NUMBER: 12
   tasks:
           - name: deploiement de conteneur docker
             docker_container:
