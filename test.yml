@@ -1,0 +1,21 @@
+---
+- name: deploiement de l'application 
+  hosts: servers
+  become: yes
+  tasks:
+          - apt:
+                   state: latest
+                   name: python-pip
+
+          - pip:
+                 name:
+                         - docker
+                         - requests>=2.22.1
+          - name: deploy nginx docker container
+            docker_container:
+                image: nginx:stable
+                name: nginx
+                state: started
+                auto_remove: true
+                ports:
+                  - "8080:80"

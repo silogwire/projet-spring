@@ -2,11 +2,13 @@
 - name: deploiement de l'application 
   hosts: servers
   become: yes
+  vars:
+          BUILD_NUMBER: 12
   tasks:
           - name: deploiement de conteneur docker
             docker_container:
-                    image: sihamlogwire/app:$BUILD_NUMBER
-                    name: sprint_project:$BUILD_NUMBER
+                    image: sihamlogwire/app:{{ BUILD_NUMBER }}
+                    name: sprint_project:{{ BUILD_NUMBER }}
                     state: started
                     auto_remove: true
                     ports:
