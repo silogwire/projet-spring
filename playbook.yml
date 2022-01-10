@@ -2,8 +2,6 @@
 - name: deploiement de l'application 
   hosts: servers
   become: yes
-  vars:
-          BUILD_NUMBER: 20
   tasks:
           - name: deploiement de conteneur docker
             docker_container:
